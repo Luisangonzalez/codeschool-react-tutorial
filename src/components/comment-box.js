@@ -1,5 +1,4 @@
 import React from 'react';
-import jQuery from 'jquery';
 import CommentForm from './comment-form.js';
 import CommentAvatarList from './comment-avatar-list.js';
 import Comment from './comment.js';
@@ -37,7 +36,6 @@ export default class CommentBox extends React.Component {
           </div>
         </div>
       </div>
-
     );
   }
 
@@ -91,15 +89,17 @@ export default class CommentBox extends React.Component {
 
   }
 
-  _fetchComments() {
-    jQuery.ajax({
-      method: 'GET',
-      url: 'comments.json',
-      success: (comments) => {
-        this.setState({ comments })
-      }
-    });
+  async _fetchComments() {
+    try {
+      let response = await fetch('comments.json');
+      let comments = await response.json();
+      this.setState({ comments })
+    } catch(error) {
+      console.log(error);
+    }
+
   }
+
 
   _deleteComment(commentID) {
     const comments = this.state.comments.filter(
@@ -109,5 +109,3 @@ export default class CommentBox extends React.Component {
     this.setState({ comments });
   }
 }
-
-

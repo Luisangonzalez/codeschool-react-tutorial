@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class CommentConfirmation extends React.Component {
   constructor() {
@@ -46,5 +47,5 @@ export default class CommentConfirmation extends React.Component {
 }
 
 CommentConfirmation.propTypes = {
-  onConfirm: React.PropTypes.func.isRequired
+  onConfirm: PropTypes.func.isRequired
 };

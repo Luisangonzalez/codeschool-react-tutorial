@@ -11,7 +11,7 @@ export default class CommentAvatarList extends React.Component {
         <ul>
           {avatars.map((avatarUrl, i) => (
             <li key={i}>
-              <img src={avatarUrl} />
+              <img alt='avatar' src={avatarUrl} />
             </li>
           ))}
         </ul>
